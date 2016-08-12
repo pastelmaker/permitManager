@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import pastelmaker.permitManager.permit.Permit;
+import pastelmaker.permitManager.project.Project;
 
 @Entity
 @Table(name = "User")
@@ -20,6 +21,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private Set<Permit> permits;
+	private Set<Project> projects;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,6 +56,15 @@ public class User {
 
 	public void setPermits(Set<Permit> permits) {
 		this.permits = permits;
+	}
+
+	@OneToMany(mappedBy = "leader", cascade = CascadeType.ALL)
+	public Set<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
 	}
 
 

@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import pastelmaker.permitManager.project.Project;
 import pastelmaker.permitManager.user.User;
 
 @Entity
@@ -17,8 +18,9 @@ public class Permit {
     private long id;
     private User requester;
     private String type;
-    private String project;
+    private Project project;
     private String supplierNumber;
+    private String supplierName;
     private String value;
     private String description;
     private String justification;
@@ -41,11 +43,13 @@ public class Permit {
 		this.type = type;
 	}
 
-	public String getProject() {
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	public Project getProject() {
 		return project;
 	}
 
-	public void setProject(String project) {
+	public void setProject(Project project) {
 		this.project = project;
 	}
 
@@ -89,6 +93,14 @@ public class Permit {
 
 	public void setJustification(String justification) {
 		this.justification = justification;
+	}
+
+	public String getSupplierName() {
+		return supplierName;
+	}
+
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
 	}
 
 }
