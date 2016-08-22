@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import pastelmaker.permitManager.user.User;
@@ -43,6 +45,8 @@ public class Project {
 		this.description = description;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	public User getLeader() {
 		return leader;
 	}

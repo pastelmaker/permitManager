@@ -11,6 +11,7 @@ public class PermitManagerApplication {
 
 	@RequestMapping("/")
 	public String getHome() {
+
 		return "Hello World";
 	}
 
